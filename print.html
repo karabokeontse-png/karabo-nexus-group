@@ -337,15 +337,49 @@ footer.site a { color: var(--ink-dim); }
 .reveal { opacity: 0; transform: translateY(22px); transition: opacity .7s var(--ease), transform .7s var(--ease); }
 .reveal.in { opacity: 1; transform: none; }
 @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; } }
+
+:root{
+  --div-labs:#5FA8E8;
+  --div-studio:#D4718A;
+  --div-print:#D9A441;
+  --div-advisory:#7CC4A0;
+  --div:#E08C99;           
+  --div-fill:rgba(224,139,153,.12);
+}
+[data-division="labs"]{--div:var(--div-labs);--div-fill:rgba(95,168,232,.12)}
+[data-division="studio"]{--div:var(--div-studio);--div-fill:rgba(212,113,138,.12)}
+[data-division="print"]{--div:var(--div-print);--div-fill:rgba(217,164,65,.12)}
+[data-division="advisory"]{--div:var(--div-advisory);--div-fill:rgba(124,196,160,.12)}
+
+.eyebrow,.crumbs a,.go,.contact-card a,.prose li{color:var(--div)}
+.card--labs .eyebrow,.card--labs .go{color:var(--div-labs)}
+.card--studio .eyebrow,.card--studio .go{color:var(--div-studio)}
+.card--print .eyebrow,.card--print .go{color:var(--div-print)}
+.card--advisory .eyebrow,.card--advisory .go{color:var(--div-advisory)}
+
+.brand{gap:.7rem;flex-direction:row;align-items:center}
+.brand svg{width:30px;height:30px;flex:0 0 30px}
+.brand .brand-text{display:flex;flex-direction:column;line-height:1.15}
+
+.head-row{display:flex;align-items:center;gap:2rem;flex-wrap:wrap}
+.head-mark{flex:0 0 auto}
+.head-mark svg{width:104px;height:104px}
+.head-copy{flex:1 1 320px;min-width:0}
+
+.card>svg{width:58px;height:58px;display:block;margin:0 0 1rem}
+.card{text-align:left}
+.card h3{margin-top:.15rem}
+
+@media (max-width:760px){.head-mark svg{width:72px;height:72px}.brand svg{width:26px;height:26px;flex:0 0 26px}}
 </style>
 </head>
-<body>
+<body data-division="print">
 
 <a class="skip-link" href="#main">Skip to content</a>
 
 <header class="site">
   <div class="bar">
-    <a class="brand" href="index.html"><b>Karabo Nexus Group</b><span>TeloNexus</span></a>
+    <a class="brand" href="index.html"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-label="TeloNexus Print"> <title>TeloNexus Print</title> <path d="M64,18 L116,48 L64,78 L12,48 Z" fill="#D9A441"/> <path d="M14,62 L64,90 L114,62 L114,70 L64,98 L14,70 Z" fill="#C08B2E"/> <path d="M14,82 L64,110 L114,82 L114,90 L64,118 L14,90 Z" fill="#A8761F"/> </svg><span class="brand-text"><b>Karabo Nexus Group</b><span>TeloNexus Print</span></span></a>
     <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="nav"><span></span><span></span><span></span></button>
     <nav class="nav" id="nav" aria-label="Primary">
       <a href="index.html">Group</a>
@@ -361,14 +395,12 @@ footer.site a { color: var(--ink-dim); }
 
 <main id="main">
 
-  <section class="page-head">
-    <div class="wrap">
+  <section class="page-head"><div class="wrap head-row"><div class="head-mark"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-label="TeloNexus Print"> <title>TeloNexus Print</title> <path d="M64,18 L116,48 L64,78 L12,48 Z" fill="#D9A441"/> <path d="M14,62 L64,90 L114,62 L114,70 L64,98 L14,70 Z" fill="#C08B2E"/> <path d="M14,82 L64,110 L114,82 L114,90 L64,118 L14,90 Z" fill="#A8761F"/> </svg></div><div class="head-copy">
       <p class="crumbs"><a href="index.html">Karabo Nexus Group</a> / TeloNexus Print</p>
       <p class="eyebrow">Division</p>
       <h1>TeloNexus Print</h1>
       <p class="lede">The publishing arm of Karabo Nexus Group — producing published titles and print media.</p>
-    </div>
-  </section>
+    </div></div></section>
 
   <section class="prose">
     <div class="wrap">

@@ -337,6 +337,40 @@ footer.site a { color: var(--ink-dim); }
 .reveal { opacity: 0; transform: translateY(22px); transition: opacity .7s var(--ease), transform .7s var(--ease); }
 .reveal.in { opacity: 1; transform: none; }
 @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; } }
+
+:root{
+  --div-labs:#5FA8E8;
+  --div-studio:#D4718A;
+  --div-print:#D9A441;
+  --div-advisory:#7CC4A0;
+  --div:#E08C99;           
+  --div-fill:rgba(224,139,153,.12);
+}
+[data-division="labs"]{--div:var(--div-labs);--div-fill:rgba(95,168,232,.12)}
+[data-division="studio"]{--div:var(--div-studio);--div-fill:rgba(212,113,138,.12)}
+[data-division="print"]{--div:var(--div-print);--div-fill:rgba(217,164,65,.12)}
+[data-division="advisory"]{--div:var(--div-advisory);--div-fill:rgba(124,196,160,.12)}
+
+.eyebrow,.crumbs a,.go,.contact-card a,.prose li{color:var(--div)}
+.card--labs .eyebrow,.card--labs .go{color:var(--div-labs)}
+.card--studio .eyebrow,.card--studio .go{color:var(--div-studio)}
+.card--print .eyebrow,.card--print .go{color:var(--div-print)}
+.card--advisory .eyebrow,.card--advisory .go{color:var(--div-advisory)}
+
+.brand{gap:.7rem;flex-direction:row;align-items:center}
+.brand svg{width:30px;height:30px;flex:0 0 30px}
+.brand .brand-text{display:flex;flex-direction:column;line-height:1.15}
+
+.head-row{display:flex;align-items:center;gap:2rem;flex-wrap:wrap}
+.head-mark{flex:0 0 auto}
+.head-mark svg{width:104px;height:104px}
+.head-copy{flex:1 1 320px;min-width:0}
+
+.card>svg{width:58px;height:58px;display:block;margin:0 0 1rem}
+.card{text-align:left}
+.card h3{margin-top:.15rem}
+
+@media (max-width:760px){.head-mark svg{width:72px;height:72px}.brand svg{width:26px;height:26px;flex:0 0 26px}}
 </style>
 </head>
 <body>
@@ -345,10 +379,7 @@ footer.site a { color: var(--ink-dim); }
 
 <header class="site">
   <div class="bar">
-    <a class="brand" href="index.html">
-      <b>Karabo Nexus Group</b>
-      <span>TeloNexus</span>
-    </a>
+    <a class="brand" href="index.html"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-label="Karabo Nexus Group"> <title>Karabo Nexus Group</title> <g stroke="#E8DFD9" stroke-width="2.2" stroke-linecap="round" opacity=".55" fill="none"><line x1="64" y1="64" x2="95.11" y2="95.11"/><line x1="64" y1="64" x2="32.89" y2="95.11"/><line x1="64" y1="64" x2="32.89" y2="32.89"/><line x1="64" y1="64" x2="95.11" y2="32.89"/></g> <circle cx="64" cy="64" r="44.00" fill="none" stroke="#E8DFD9" stroke-width="3.4" stroke-linecap="round" stroke-dasharray="53.91 60.82" transform="rotate(-25.20 64 64)"/> <circle cx="95.11" cy="95.11" r="6.4" fill="#5FA8E8"/><circle cx="32.89" cy="95.11" r="6.4" fill="#D4718A"/><circle cx="32.89" cy="32.89" r="6.4" fill="#7CC4A0"/><circle cx="95.11" cy="32.89" r="6.4" fill="#D9A441"/> <circle cx="64" cy="64" r="10.5" fill="#E8DFD9"/> </svg><span class="brand-text"><b>Karabo Nexus Group</b><span>TeloNexus</span></span></a>
     <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="nav">
       <span></span><span></span><span></span>
     </button>
@@ -402,28 +433,28 @@ footer.site a { color: var(--ink-dim); }
       </div>
       <div class="grid-4">
 
-        <a class="card" href="labs.html">
+        <a class="card card--labs" href="labs.html"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-label="TeloNexus Labs"> <title>TeloNexus Labs</title> <circle cx="64" cy="64" r="52.00" fill="none" stroke="#5FA8E8" stroke-width="4" stroke-linecap="round" stroke-dasharray="280.73 46.00" transform="rotate(-354.32 64 64)"/> <circle cx="64" cy="64" r="37.00" fill="none" stroke="#5FA8E8" stroke-width="4" stroke-linecap="round" stroke-dasharray="194.48 38.00" transform="rotate(-166.16 64 64)"/> <circle cx="64" cy="64" r="23.00" fill="none" stroke="#5FA8E8" stroke-width="4" stroke-linecap="round" stroke-dasharray="114.51 30.00" transform="rotate(-330.27 64 64)"/> <circle cx="100.77" cy="27.23" r="5.4" fill="#7FC4F5"/> <circle cx="37.84" cy="90.16" r="5.0" fill="#7FC4F5"/> <circle cx="64" cy="64" r="9" fill="#7FC4F5"/> </svg>
           <p class="eyebrow">TeloNexus Labs</p>
           <h3>Software engineering</h3>
           <p>Websites, web applications, and e-commerce platforms — from single-page launches to multi-module systems.</p>
           <span class="go">Visit Labs →</span>
         </a>
 
-        <a class="card" href="studio.html">
+        <a class="card card--studio" href="studio.html"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-label="TeloNexus Studio"> <title>TeloNexus Studio</title> <path d="M18,40 L52,20 L78,20 L44,40 Z" fill="#F0AAB8"/> <path d="M50,56 L84,36 L110,36 L76,56 Z" fill="#D4718A"/> <path d="M44,40 L78,20 L78,36 L44,56 Z" fill="#DE8098"/> <path d="M18,40 L44,56 L44,74 L18,58 Z" fill="#DE8098"/> </svg>
           <p class="eyebrow">TeloNexus Studio</p>
           <h3>Design &amp; digitization</h3>
           <p>Logos, brand identity, print collateral, social graphics, and digitization of physical artwork into digital files.</p>
           <span class="go">Visit Studio →</span>
         </a>
 
-        <a class="card" href="advisory.html">
+        <a class="card card--advisory" href="advisory.html"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-label="TeloNexus Advisory"> <title>TeloNexus Advisory</title> <g stroke="#7CC4A0" stroke-width="3.2" fill="none" stroke-linecap="round"> <path d="M116.00,64.00 L90.00,109.03 L38.00,109.03 L12.00,64.00 L38.00,18.97 L90.00,18.97 Z"/> <line x1="64" y1="64" x2="116.00" y2="64.00" /><line x1="64" y1="64" x2="90.00" y2="109.03" /><line x1="64" y1="64" x2="38.00" y2="109.03" /><line x1="64" y1="64" x2="12.00" y2="64.00" /><line x1="64" y1="64" x2="38.00" y2="18.97" /><line x1="64" y1="64" x2="90.00" y2="18.97" /> </g> <circle cx="116.00" cy="64.00" r="4.6" fill="#7CC4A0"/><circle cx="90.00" cy="109.03" r="4.6" fill="#7CC4A0"/><circle cx="38.00" cy="109.03" r="4.6" fill="#7CC4A0"/><circle cx="12.00" cy="64.00" r="4.6" fill="#7CC4A0"/><circle cx="38.00" cy="18.97" r="4.6" fill="#7CC4A0"/><circle cx="90.00" cy="18.97" r="4.6" fill="#7CC4A0"/> <circle cx="64" cy="64" r="7" fill="#7CC4A0"/> </svg>
           <p class="eyebrow">TeloNexus Advisory</p>
           <h3>ICT systems &amp; audit</h3>
           <p>ICT systems support, data protection compliance, and internal audit — human-led, on-site engagements.</p>
           <span class="go">Visit Advisory →</span>
         </a>
 
-        <a class="card" href="print.html">
+        <a class="card card--print" href="print.html"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-label="TeloNexus Print"> <title>TeloNexus Print</title> <path d="M64,18 L116,48 L64,78 L12,48 Z" fill="#D9A441"/> <path d="M14,62 L64,90 L114,62 L114,70 L64,98 L14,70 Z" fill="#C08B2E"/> <path d="M14,82 L64,110 L114,82 L114,90 L64,118 L14,90 Z" fill="#A8761F"/> </svg>
           <p class="eyebrow">TeloNexus Print</p>
           <h3>Publishing</h3>
           <p>Published titles and print media, beginning with a children's activity book of 100+ pages.</p>
