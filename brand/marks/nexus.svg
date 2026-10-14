@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128" role="img" aria-label="Karabo Nexus Group">
+ <title>Karabo Nexus Group</title>
+ <g stroke="#E8DFD9" stroke-width="2.2" stroke-linecap="round" opacity=".55" fill="none"><line x1="64" y1="64" x2="95.11" y2="95.11"/><line x1="64" y1="64" x2="32.89" y2="95.11"/><line x1="64" y1="64" x2="32.89" y2="32.89"/><line x1="64" y1="64" x2="95.11" y2="32.89"/></g>
+ <circle cx="64" cy="64" r="44.00" fill="none" stroke="#E8DFD9" stroke-width="3.4" stroke-linecap="round"
+   stroke-dasharray="53.91 60.82" transform="rotate(-25.20 64 64)"/>
+ <circle cx="95.11" cy="95.11" r="6.4" fill="#5FA8E8"/><circle cx="32.89" cy="95.11" r="6.4" fill="#D4718A"/><circle cx="32.89" cy="32.89" r="6.4" fill="#7CC4A0"/><circle cx="95.11" cy="32.89" r="6.4" fill="#D9A441"/>
+ <circle cx="64" cy="64" r="10.5" fill="#E8DFD9"/>
+</svg>
