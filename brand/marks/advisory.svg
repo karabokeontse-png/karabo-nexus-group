@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128" role="img" aria-label="TeloNexus Advisory">
+ <title>TeloNexus Advisory</title>
+ <g stroke="#7CC4A0" stroke-width="3.2" fill="none" stroke-linecap="round">
+  <path d="M116.00,64.00 L90.00,109.03 L38.00,109.03 L12.00,64.00 L38.00,18.97 L90.00,18.97 Z"/>
+  <line x1="64" y1="64" x2="116.00" y2="64.00" /><line x1="64" y1="64" x2="90.00" y2="109.03" /><line x1="64" y1="64" x2="38.00" y2="109.03" /><line x1="64" y1="64" x2="12.00" y2="64.00" /><line x1="64" y1="64" x2="38.00" y2="18.97" /><line x1="64" y1="64" x2="90.00" y2="18.97" />
+ </g>
+ <circle cx="116.00" cy="64.00" r="4.6" fill="#7CC4A0"/><circle cx="90.00" cy="109.03" r="4.6" fill="#7CC4A0"/><circle cx="38.00" cy="109.03" r="4.6" fill="#7CC4A0"/><circle cx="12.00" cy="64.00" r="4.6" fill="#7CC4A0"/><circle cx="38.00" cy="18.97" r="4.6" fill="#7CC4A0"/><circle cx="90.00" cy="18.97" r="4.6" fill="#7CC4A0"/>
+ <circle cx="64" cy="64" r="7" fill="#7CC4A0"/>
+</svg>
