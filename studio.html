@@ -6,6 +6,39 @@
 <title>TeloNexus Studio — Design &amp; Digitization | Karabo Nexus Group</title>
 <meta name="description" content="TeloNexus Studio delivers logo and brand identity, print collateral, social graphics, and digitization — clean copy, retouching, restoration, and vector rebuilding.">
 <style>
+@font-face {
+  font-family: 'Fraunces';
+  font-style: normal;
+  font-weight: 300 600;
+  font-display: swap;
+  src: url('assets/fonts/fraunces-var.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 300 600;
+  font-display: swap;
+  src: url('assets/fonts/inter-var.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'IBM Plex Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('assets/fonts/plexmono-400.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'IBM Plex Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('assets/fonts/plexmono-500.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
 :root {
   
   --bg: #0F1621;
@@ -199,6 +232,31 @@ header.site {
 .stat .label { display: block; margin-top: .5rem; font-size: .78rem; color: var(--ink-dim); letter-spacing: .03em; }
 .proof-note { margin-top: 1.8rem; }
 
+.gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: .9rem; margin-top: 1.2rem; }
+.shot {
+  position: relative; display: block; aspect-ratio: 4 / 5; overflow: hidden;
+  border: 1px solid var(--border); background: var(--bg-3);
+}
+.shot.wide { aspect-ratio: 4 / 3; }
+.shot img { width: 100%; height: 100%; object-fit: cover; transition: transform .35s var(--ease); }
+.shot:hover, .shot:focus-visible { border-color: var(--bronze); }
+.shot:hover img { transform: scale(1.04); }
+.shot figcaption {
+  position: absolute; left: 0; right: 0; bottom: 0;
+  padding: 1.6rem .8rem .6rem;
+  background: linear-gradient(to top, rgba(15, 22, 33, .92), transparent);
+  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+  font-size: .6rem; letter-spacing: .1em; text-transform: uppercase;
+  color: var(--ink); opacity: 0; transition: opacity .25s;
+}
+.shot:hover figcaption, .shot:focus-visible figcaption { opacity: 1; }
+.gallery-tag {
+  display: inline-block; margin-top: 1.6rem;
+  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+  font-size: .66rem; letter-spacing: .14em; text-transform: uppercase;
+  color: var(--accent-text);
+}
+
 .table-wrap { overflow-x: auto; border: 1px solid var(--border); }
 table { width: 100%; border-collapse: collapse; font-size: .9rem; min-width: 560px; }
 caption { text-align: left; padding: 1.1rem 1.2rem .2rem; color: var(--ink-dim); font-size: .85rem; }
@@ -374,6 +432,44 @@ footer.site a { color: var(--ink-dim); }
         <li>03 — You get the files</li>
       </ul>
       <p>Delivered hi-res and print-ready, screen-ready, or web-ready, depending on how they will be used.</p>
+
+<h2>Selected work</h2>
+<p>A cross-section of brand identity, print collateral and packaging produced by the division. Work is published with the client&rsquo;s permission.</p>
+<span class="gallery-tag">Logos & brand identity</span>
+<div class="gallery">
+<figure class="shot"><img src="assets/work/logos/optimized/d-phet-logo.jpg" alt="D-Phet brand logo" loading="lazy"><figcaption>D-Phet brand logo</figcaption></figure>
+<figure class="shot"><img src="assets/work/logos/optimized/rad-services-logo.jpg" alt="RAD Services brand logo" loading="lazy"><figcaption>RAD Services brand logo</figcaption></figure>
+<figure class="shot"><img src="assets/work/logos/optimized/initial-font-logo.jpg" alt="Minimal initial-letter font logo" loading="lazy"><figcaption>Minimal initial-letter font logo</figcaption></figure>
+<figure class="shot"><img src="assets/work/logos/optimized/botswana-badge.jpg" alt="Botswana-themed logo badge" loading="lazy"><figcaption>Botswana-themed logo badge</figcaption></figure>
+<figure class="shot"><img src="assets/work/logos/optimized/botswana-logo.jpg" alt="Botswana brand logo" loading="lazy"><figcaption>Botswana brand logo</figcaption></figure>
+<figure class="shot"><img src="assets/work/logos/optimized/nl-monogram-logo.jpg" alt="NL monogram logo" loading="lazy"><figcaption>NL monogram logo</figcaption></figure>
+<figure class="shot"><img src="assets/work/logos/optimized/botswana-stock-exchange.jpg" alt="Botswana Stock Exchange design" loading="lazy"><figcaption>Botswana Stock Exchange design</figcaption></figure>
+</div>
+<span class="gallery-tag">Flyers & posters</span>
+<div class="gallery">
+<figure class="shot"><img src="assets/work/flyers-posters/optimized/fast-food-flyer.jpg" alt="Fast-food restaurant advertisement flyer" loading="lazy"><figcaption>Fast-food restaurant advertisement flyer</figcaption></figure>
+<figure class="shot"><img src="assets/work/flyers-posters/optimized/veggie-party-flyer.jpg" alt="Veggie party flyer" loading="lazy"><figcaption>Veggie party flyer</figcaption></figure>
+<figure class="shot"><img src="assets/work/flyers-posters/optimized/tall-poster.jpg" alt="Tall promotional poster design" loading="lazy"><figcaption>Tall promotional poster design</figcaption></figure>
+<figure class="shot"><img src="assets/work/flyers-posters/optimized/promo-poster.jpg" alt="Promotional poster design" loading="lazy"><figcaption>Promotional poster design</figcaption></figure>
+<figure class="shot"><img src="assets/work/flyers-posters/optimized/fashion-district-flyer.jpg" alt="Fashion District promotional flyer" loading="lazy"><figcaption>Fashion District promotional flyer</figcaption></figure>
+<figure class="shot"><img src="assets/work/flyers-posters/optimized/molepolole-festival-flyer.jpg" alt="Molepolole Festival event flyer" loading="lazy"><figcaption>Molepolole Festival event flyer</figcaption></figure>
+</div>
+<span class="gallery-tag">Business cards & documents</span>
+<div class="gallery">
+<figure class="shot"><img src="assets/work/business-cards/optimized/photographer-business-card.jpg" alt="Professional photographer&#x27;s business card" loading="lazy"><figcaption>Professional photographer&#x27;s business card</figcaption></figure>
+<figure class="shot"><img src="assets/work/business-cards/optimized/rad-services-business-card.jpg" alt="J&amp;L RAD Services business card for Dr Garebue Nlashwa" loading="lazy"><figcaption>J&amp;L RAD Services business card for Dr Garebue Nlashwa</figcaption></figure>
+<figure class="shot"><img src="assets/work/business-cards/optimized/rad-services-profile-card.jpg" alt="Radiology profile card for Dr Garebue Nlashwa" loading="lazy"><figcaption>Radiology profile card for Dr Garebue Nlashwa</figcaption></figure>
+<figure class="shot"><img src="assets/work/documents/optimized/rad-services-payslip.jpg" alt="J&amp;L RAD Services payslip design" loading="lazy"><figcaption>J&amp;L RAD Services payslip design</figcaption></figure>
+<figure class="shot"><img src="assets/work/documents/optimized/rad-services-receipt.jpg" alt="J&amp;L RAD Services receipt design" loading="lazy"><figcaption>J&amp;L RAD Services receipt design</figcaption></figure>
+</div>
+<span class="gallery-tag">Menus, social & packages</span>
+<div class="gallery">
+<figure class="shot"><img src="assets/work/social-media/optimized/election-voting-post.jpg" alt="Political election voting Instagram post" loading="lazy"><figcaption>Political election voting Instagram post</figcaption></figure>
+<figure class="shot wide"><img src="assets/work/menus/optimized/pizza-dinner-menu.jpg" alt="Pizza dinner menu design" loading="lazy"><figcaption>Pizza dinner menu design</figcaption></figure>
+<figure class="shot"><img src="assets/work/photos/optimized/work-photo-1.jpg" alt="Photo of printed design work" loading="lazy"><figcaption>Photo of printed design work</figcaption></figure>
+<figure class="shot"><img src="assets/work/photos/optimized/work-photo-2.jpg" alt="Photo of printed design work" loading="lazy"><figcaption>Photo of printed design work</figcaption></figure>
+<figure class="shot wide"><img src="assets/work/packages/ll-package-showcase.jpg" alt="L&amp;L Business Design Package — logo, business card, letterhead and payslip" loading="lazy"><figcaption>L&amp;L Business Design Package — logo, business card, letterhead and payslip</figcaption></figure>
+</div>
 
       <h2>Engagement terms</h2>
       <p>A non-refundable 25% deposit confirms the order; the balance is due on delivery.</p>
