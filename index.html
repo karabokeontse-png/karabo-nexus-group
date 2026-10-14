@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Karabo Nexus Group — Software, Design, Advisory &amp; Publishing</title>
+<meta name="description" content="Karabo Nexus Group operates four divisions: TeloNexus Labs (software engineering), TeloNexus Studio (design and digitization), TeloNexus Advisory (ICT audit and compliance), and TeloNexus Print (publishing).">
+<style>
+:root {
+  
+  --bg: #0F1621;
+  --bg-2: #1E293B;
+  --bg-3: #24324A;
+  --ink: #F3F4F6;
+  --ink-dim: #A8B2C1;
+  --border: #2A3A54;
+  --bronze: #C15563;
+  --bronze-deep: #8E1D2C;
+  --bronze-soft: rgba(193, 85, 99, 0.30);
+  --steel: #A8B2C1;
+
+  
+  --accent-text: #E08C99;
+
+  --nav-bg: linear-gradient(to bottom, rgba(15, 22, 33, 0.92), rgba(15, 22, 33, 0.72));
+  --max: 1120px;
+  --radius: 10px;
+  --ease: cubic-bezier(.22, 1, .36, 1);
+}
+
+html[data-theme="light"] {
+  --bg: #F3F4F6;
+  --bg-2: #FFFFFF;
+  --bg-3: #E9EEF5;
+  --ink: #0F1621;
+  --ink-dim: #5B6B80;
+  --border: #D7DFE9;
+  --bronze: #8E1D2C;
+  --bronze-deep: #8E1D2C;
+  --bronze-soft: rgba(142, 29, 44, 0.16);
+  --accent-text: #8E1D2C;
+  --steel: #52637A;
+  --nav-bg: linear-gradient(to bottom, rgba(255, 255, 255, 0.94), rgba(255, 255, 255, 0.78));
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: 'Inter', system-ui, sans-serif;
+  font-weight: 300;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+img { max-width: 100%; display: block; }
+
+a { color: inherit; }
+
+:focus-visible {
+  outline: 2px solid var(--accent-text);
+  outline-offset: 3px;
+  border-radius: 3px;
+}
+
+::selection { background: var(--bronze-soft); color: var(--ink); }
+
+.skip-link {
+  position: absolute; left: -9999px; top: 0;
+  background: var(--bg-2); color: var(--ink);
+  padding: .8rem 1.2rem; border: 1px solid var(--border); z-index: 200;
+}
+.skip-link:focus { left: 1rem; top: 1rem; }
+
+h1, h2, h3, h4 { font-family: 'Fraunces', Georgia, serif; font-weight: 400; line-height: 1.15; letter-spacing: -0.01em; }
+
+.eyebrow {
+  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+  font-size: .72rem;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--accent-text);
+}
+
+.lede { color: var(--ink-dim); font-size: 1.05rem; max-width: 62ch; }
+
+.mono {
+  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+  font-size: .78rem;
+  letter-spacing: .06em;
+  color: var(--ink-dim);
+}
+
+.wrap { max-width: var(--max); margin: 0 auto; padding: 0 6vw; }
+section { padding: 4.5rem 0; }
+.section-head { margin-bottom: 2.6rem; }
+.section-head h2 { font-size: clamp(1.7rem, 3.4vw, 2.5rem); margin-top: .6rem; }
+
+header.site {
+  position: sticky; top: 0; z-index: 50;
+  backdrop-filter: blur(10px);
+  background: var(--nav-bg);
+  border-bottom: 1px solid var(--border);
+}
+.bar {
+  display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+  padding: 1rem 6vw;
+  max-width: var(--max); margin: 0 auto;
+}
+.brand { text-decoration: none; display: flex; flex-direction: column; line-height: 1.15; }
+.brand b { font-family: 'Fraunces', serif; font-weight: 500; font-size: 1.05rem; letter-spacing: -0.01em; }
+.brand span {
+  font-family: 'IBM Plex Mono', monospace; font-size: .58rem;
+  letter-spacing: .2em; text-transform: uppercase; color: var(--accent-text);
+}
+.nav { display: flex; align-items: center; gap: 1.35rem; }
+.nav a { text-decoration: none; color: var(--ink-dim); font-size: .82rem; transition: color .2s; }
+.nav a:hover, .nav a[aria-current="page"] { color: var(--ink); }
+
+.theme-toggle {
+  background: transparent; border: 1px solid var(--border); color: var(--ink-dim);
+  width: 38px; height: 38px; border-radius: 50%; cursor: pointer; font-size: 1rem;
+  display: inline-flex; align-items: center; justify-content: center;
+  transition: border-color .2s, color .2s;
+}
+.theme-toggle:hover { border-color: var(--bronze); color: var(--ink); }
+
+.nav-toggle { display: none; }
+
+.hero { position: relative; padding: 6rem 0 4rem; border-bottom: 1px solid var(--border); }
+.hero::after {
+  content: ''; position: absolute; right: -10vmax; top: -16vmax;
+  width: 44vmax; height: 44vmax; border-radius: 50%;
+  background: radial-gradient(circle, rgba(193, 85, 99, .30), transparent 62%);
+  filter: blur(80px); opacity: .5; pointer-events: none; z-index: 0;
+}
+.hero-inner { position: relative; z-index: 1; }
+.hero h1 { font-size: clamp(2.2rem, 6vw, 4.2rem); margin: .9rem 0 1.2rem; }
+.hero h1 em { font-style: italic; font-weight: 300; color: var(--bronze); }
+
+.grid-4 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.2rem; }
+
+.card {
+  position: relative; display: block; text-decoration: none;
+  border: 1px solid var(--border); background: var(--bg-2);
+  padding: 2rem 1.8rem;
+  transition: border-color .25s, transform .25s, background .25s;
+}
+.card:hover, .card:focus-visible { border-color: var(--bronze); transform: translateY(-3px); background: var(--bg-3); }
+.card h3 { font-size: 1.25rem; font-weight: 500; }
+.card p { color: var(--ink-dim); font-size: .92rem; margin-top: .6rem; }
+.card .go {
+  display: inline-block; margin-top: 1.1rem;
+  font-family: 'IBM Plex Mono', monospace; font-size: .68rem;
+  letter-spacing: .1em; text-transform: uppercase; color: var(--accent-text);
+}
+.card::after {
+  content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 2px;
+  background: linear-gradient(90deg, var(--bronze), transparent);
+  transform: scaleX(0); transform-origin: left; transition: transform .4s var(--ease);
+}
+.card:hover::after, .card:focus-visible::after { transform: scaleX(1); }
+
+.teaser-box {
+  border: 1px dashed var(--border); background: var(--bg-2);
+  padding: 2.2rem 2rem; text-align: center;
+}
+.teaser-box h3 { font-size: 1.5rem; margin: .7rem 0 .6rem; }
+.teaser-box p { color: var(--ink-dim); font-size: .95rem; max-width: 52ch; margin: 0 auto; }
+.chips { display: flex; gap: .5rem; justify-content: center; margin-top: 1.1rem; flex-wrap: wrap; }
+.chip {
+  font-family: 'IBM Plex Mono', monospace; font-size: .64rem;
+  letter-spacing: .1em; text-transform: uppercase;
+  border: 1px solid var(--bronze-soft); padding: .3rem .7rem; color: var(--accent-text);
+}
+
+.narrative { background: var(--bg-2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+.narrative h2 { font-size: clamp(1.8rem, 4vw, 2.8rem); }
+.narrative h2 em { font-style: italic; font-weight: 300; color: var(--bronze); }
+.narrative p { color: var(--ink-dim); max-width: 64ch; margin-top: 1.1rem; }
+.narrative p + p { margin-top: .9rem; }
+
+.page-head { border-bottom: 1px solid var(--border); padding: 4rem 0 3rem; }
+.page-head h1 { font-size: clamp(2rem, 5vw, 3.2rem); margin: .7rem 0 1rem; }
+.crumbs { font-family: 'IBM Plex Mono', monospace; font-size: .68rem; letter-spacing: .1em; color: var(--ink-dim); margin-bottom: 1rem; }
+.crumbs a { color: var(--accent-text); text-decoration: none; }
+
+.proof { padding: 3rem 0; border-bottom: 1px solid var(--border); }
+.stats { display: flex; gap: 3rem; flex-wrap: wrap; }
+.stat { border-top: 1px solid var(--border); padding-top: 1rem; min-width: 140px; }
+.stat .num {
+  display: block; font-family: 'Fraunces', Georgia, serif;
+  font-size: 2.2rem; line-height: 1; color: var(--bronze);
+}
+.stat .label { display: block; margin-top: .5rem; font-size: .78rem; color: var(--ink-dim); letter-spacing: .03em; }
+.proof-note { margin-top: 1.8rem; }
+
+.table-wrap { overflow-x: auto; border: 1px solid var(--border); }
+table { width: 100%; border-collapse: collapse; font-size: .9rem; min-width: 560px; }
+caption { text-align: left; padding: 1.1rem 1.2rem .2rem; color: var(--ink-dim); font-size: .85rem; }
+th, td { text-align: left; padding: .8rem 1.2rem; border-top: 1px solid var(--border); vertical-align: top; }
+thead th {
+  font-family: 'IBM Plex Mono', monospace; font-size: .66rem;
+  letter-spacing: .12em; text-transform: uppercase;
+  color: var(--accent-text); font-weight: 500; border-top: 0;
+}
+td.price { font-family: 'IBM Plex Mono', monospace; white-space: nowrap; color: var(--ink); }
+td.scope { color: var(--ink-dim); }
+
+.prose h2 { font-size: clamp(1.5rem, 3vw, 2.1rem); margin: 3rem 0 1rem; }
+.prose h2:first-child { margin-top: 0; }
+.prose p { color: var(--ink-dim); max-width: 68ch; margin-top: .9rem; }
+.prose ul { list-style: none; margin-top: 1rem; display: flex; flex-wrap: wrap; gap: .5rem; }
+.prose li {
+  border: 1px solid var(--border); padding: .4rem .8rem; font-size: .85rem; color: var(--ink-dim);
+}
+
+.note {
+  border-left: 2px solid var(--bronze); background: var(--bg-2);
+  padding: 1.1rem 1.3rem; margin-top: 1.4rem;
+  font-size: .88rem; color: var(--ink-dim);
+}
+.note b { color: var(--ink); font-weight: 500; }
+
+.btn {
+  display: inline-flex; align-items: center; gap: .6rem;
+  font-family: 'IBM Plex Mono', monospace; font-size: .76rem;
+  letter-spacing: .08em; text-transform: uppercase; text-decoration: none;
+  color: var(--ink); border: 1px solid var(--bronze-soft);
+  padding: .85rem 1.4rem; transition: background .2s, border-color .2s;
+}
+.btn:hover { background: rgba(193, 85, 99, .12); border-color: var(--bronze); }
+
+.actions { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 2.4rem; }
+
+.contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.2rem; }
+.contact-card { border: 1px solid var(--border); background: var(--bg-2); padding: 1.5rem; }
+.contact-card h3 { font-size: 1.05rem; font-weight: 500; margin-bottom: .5rem; }
+.contact-card a { color: var(--accent-text); text-decoration: none; font-size: .9rem; }
+.contact-card a:hover { text-decoration: underline; }
+
+footer.site {
+  border-top: 1px solid var(--border); padding: 2.4rem 0;
+  color: var(--ink-dim); font-size: .78rem;
+}
+footer.site .foot-inner {
+  max-width: var(--max); margin: 0 auto; padding: 0 6vw;
+  display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap;
+}
+footer.site a { color: var(--ink-dim); }
+
+@media (max-width: 760px) {
+  .grid-4 { grid-template-columns: 1fr; }
+  .bar { flex-wrap: wrap; }
+  .nav {
+    display: none; position: absolute; top: 100%; left: 0; right: 0;
+    flex-direction: column; align-items: flex-start; gap: 1rem;
+    background: var(--bg-2); border-bottom: 1px solid var(--border);
+    padding: 1.4rem 6vw;
+  }
+  .nav.open { display: flex; }
+  .nav-toggle {
+    display: inline-flex; flex-direction: column; align-items: center; justify-content: center;
+    gap: 5px; width: 42px; height: 42px; cursor: pointer;
+    background: transparent; border: 1px solid var(--border); color: var(--ink); border-radius: 8px;
+  }
+  .nav-toggle span { display: block; width: 18px; height: 2px; background: var(--ink); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+  html { scroll-behavior: auto; }
+}
+
+.reveal { opacity: 0; transform: translateY(22px); transition: opacity .7s var(--ease), transform .7s var(--ease); }
+.reveal.in { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; } }
+</style>
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site">
+  <div class="bar">
+    <a class="brand" href="index.html">
+      <b>Karabo Nexus Group</b>
+      <span>TeloNexus</span>
+    </a>
+    <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="nav">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="nav" id="nav" aria-label="Primary">
+      <a href="index.html" aria-current="page">Group</a>
+      <a href="labs.html">Labs</a>
+      <a href="studio.html">Studio</a>
+      <a href="advisory.html">Advisory</a>
+      <a href="print.html">Print</a>
+      <a href="#contact">Contact</a>
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle light and dark mode">◑</button>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <section class="hero">
+    <div class="wrap hero-inner">
+      <p class="eyebrow">Karabo Nexus Group</p>
+      <h1>Four practices.<br>One <em>group</em>.</h1>
+      <p class="lede">A group of software, design, advisory, and publishing practices working together under one name — each division distinct, and each accountable to the same standard.</p>
+    </div>
+  </section>
+
+  <section class="proof">
+    <div class="wrap">
+      <div class="stats">
+        <div class="stat">
+          <span class="num">6+</span>
+          <span class="label">Years of operation</span>
+        </div>
+        <div class="stat">
+          <span class="num">4</span>
+          <span class="label">Government institutions</span>
+        </div>
+        <div class="stat">
+          <span class="num">100%</span>
+          <span class="label">Audit readiness achieved</span>
+        </div>
+      </div>
+      <p class="mono proof-note">Operating experience carried into every division — ERP stability, data protection, and internal audit.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">Divisions</p>
+        <h2>Where to go next</h2>
+      </div>
+      <div class="grid-4">
+
+        <a class="card" href="labs.html">
+          <p class="eyebrow">TeloNexus Labs</p>
+          <h3>Software engineering</h3>
+          <p>Websites, web applications, and e-commerce platforms — from single-page launches to multi-module systems.</p>
+          <span class="go">Visit Labs →</span>
+        </a>
+
+        <a class="card" href="studio.html">
+          <p class="eyebrow">TeloNexus Studio</p>
+          <h3>Design &amp; digitization</h3>
+          <p>Logos, brand identity, print collateral, social graphics, and digitization of physical artwork into digital files.</p>
+          <span class="go">Visit Studio →</span>
+        </a>
+
+        <a class="card" href="advisory.html">
+          <p class="eyebrow">TeloNexus Advisory</p>
+          <h3>ICT systems &amp; audit</h3>
+          <p>ICT systems support, data protection compliance, and internal audit — human-led, on-site engagements.</p>
+          <span class="go">Visit Advisory →</span>
+        </a>
+
+        <a class="card" href="print.html">
+          <p class="eyebrow">TeloNexus Print</p>
+          <h3>Publishing</h3>
+          <p>Published titles and print media, beginning with a children's activity book of 100+ pages.</p>
+          <span class="go">Visit Print →</span>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="teaser-box">
+        <p class="eyebrow">Applications · In development · Upcoming</p>
+        <h3>Mobile Application · In Progress</h3>
+        <p>Project name hidden until launch. A native Android application currently in active development. More details once it ships.</p>
+        <div class="chips">
+          <span class="chip">Kotlin</span>
+          <span class="chip">Android</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="narrative">
+    <div class="wrap">
+      <p class="eyebrow">The name</p>
+      <h2>The word is <em>answer</em>.</h2>
+      <p><em>Karabo</em> — the name we carry — means "answer" in Setswana. It is the idea the group is built on: that good work is judged by what it resolves for the people who asked for it.</p>
+      <p>Karabo Nexus Group brings together the practices needed to deliver that answer in full — from the code that runs a system, to the design that explains it, to the audit that keeps it reliable, to the page that publishes it.</p>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">Contact</p>
+        <h2>Start a conversation</h2>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-card">
+          <h3>Email</h3>
+          <a href="mailto:karabokeontse@gmail.com">karabokeontse@gmail.com</a>
+        </div>
+        <div class="contact-card">
+          <h3>WhatsApp</h3>
+          <a href="https://wa.me/26772947916" rel="noopener" target="_blank">+267 7294 7916</a>
+        </div>
+        <div class="contact-card">
+          <h3>Founder</h3>
+          <a href="https://karabokeontse-png.github.io/Portfolio/" rel="noopener" target="_blank">Founder's portfolio &amp; track record</a>
+        </div>
+      </div>
+      <div class="actions">
+        <a class="btn" href="mailto:karabokeontse@gmail.com">Send an email</a>
+        <a class="btn" href="https://wa.me/26772947916" rel="noopener" target="_blank">Message on WhatsApp</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site">
+  <div class="foot-inner">
+    <span>© 2026 Karabo Nexus Group. All rights reserved.</span>
+    <span>Operating brand: TeloNexus</span>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var root = document.documentElement;
+  var btn = document.getElementById('themeToggle');
+  var nav = document.getElementById('nav');
+  var navBtn = document.getElementById('navToggle');
+
+  if (btn) {
+    btn.addEventListener('click', function () {
+      var light = root.getAttribute('data-theme') === 'light';
+      root.setAttribute('data-theme', light ? 'dark' : 'light');
+      btn.textContent = light ? '◑' : '◐';
+    });
+  }
+  if (navBtn) {
+    navBtn.addEventListener('click', function () {
+      var open = nav.classList.toggle('open');
+      navBtn.setAttribute('aria-expanded', String(open));
+    });
+  }
+
+  var items = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window && items.length) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, { rootMargin: '0px 0px -8% 0px' });
+    items.forEach(function (el) { io.observe(el); });
+  } else {
+    items.forEach(function (el) { el.classList.add('in'); });
+  }
+})();
+</script>
+
+</body>
+</html>
